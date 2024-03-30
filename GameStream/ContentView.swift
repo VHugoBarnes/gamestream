@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+  var body: some View {
+    NavigationStack {
+      ZStack {
+        Color(red: 19/255, green: 30/255, blue: 53/255, opacity: 1.0).ignoresSafeArea()
+        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+          Image("app-logo")
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 250)
+            .padding()
+          
+          LoginSignup()
+          
+          Spacer()
         }
-        .padding()
+      }
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
