@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RegisterView: View {
+struct Register: View {
   @State var email = ""
   @State var pwd = ""
   @State var repeatPwd = ""
@@ -157,5 +157,5 @@ func register() {
 }
 
 #Preview {
-  RegisterView()
+  Register()
 }

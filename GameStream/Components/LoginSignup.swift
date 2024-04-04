@@ -31,9 +31,9 @@ struct LoginSignup: View {
       ScrollView {
         
         if(tipoInicioSesion == true) {
-          LoginView()
+          Login()
         } else {
-          RegisterView()
+          Register()
         }
       }
     }
