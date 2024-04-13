@@ -11,7 +11,7 @@ struct GamesModel:Codable {
     var games:[GameModel]
 }
 
-struct GameModel:Codable {
+struct GameModel:Codable,Hashable {
     var title:String
     var studio:String
     var contentRaiting:String
@@ -23,7 +23,7 @@ struct GameModel:Codable {
     var galleryImages:[String]
 }
 
-struct VideoUrlModel:Codable {
+struct VideoUrlModel:Codable,Hashable {
     var mobile:String
     var tablet:String
 }
