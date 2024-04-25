@@ -110,7 +110,6 @@ struct Login: View {
   
   func login() {
     isHomeScreenActive = true;
-    print("Logged in!")
   }
 }
 

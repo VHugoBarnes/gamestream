@@ -70,7 +70,6 @@ struct SubModuloHome:View {
         ZStack {
           Button(action: {
             url = urlVideos[0]
-            print("url: \(url)")
             isPlayerActive = true
           }) {
             VStack(spacing: 0) {
@@ -180,7 +179,6 @@ struct SubModuloHome:View {
           HStack {
             Button(action: {
               url = urlVideos[1]
-              print("URL \(url)")
               isPlayerActive = true
             }) {
               Image("Abzu")
@@ -191,7 +189,6 @@ struct SubModuloHome:View {
             
             Button(action: {
               url = urlVideos[2]
-              print("URL \(url)")
               isPlayerActive = true
             }) {
               Image("Crash Bandicoot")
@@ -202,7 +199,6 @@ struct SubModuloHome:View {
             
             Button(action: {
               url = urlVideos[3]
-              print("URL \(url)")
               isPlayerActive = true
             }) {
               Image("DEATH STRANDING")

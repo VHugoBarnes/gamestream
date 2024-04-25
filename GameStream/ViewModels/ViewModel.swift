@@ -19,7 +19,6 @@ class ViewModel: ObservableObject {
     URLSession.shared.dataTask(with: request) { data, response, error in
       do{
         if let jsonData = data {
-          print("tamaño del JSON \(jsonData)")
           
           let decodeData = try JSONDecoder().decode([GameModel].self, from: jsonData)
           
