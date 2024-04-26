@@ -9,8 +9,6 @@ import SwiftUI
 import AVKit
 
 struct Home: View {
-  @State var searchText = ""
-  
   var body: some View {
     ZStack {
       Color(red: 19/255, green: 30/255, blue: 53/255, opacity: 1.0).ignoresSafeArea()
@@ -22,43 +20,43 @@ struct Home: View {
           .frame(width: 250)
           .padding()
         
-        // SEARCH
-        HStack {
-          Button(action: search, label: {
-            Image(systemName: "magnifyingglass").foregroundStyle(searchText.isEmpty ? Color(.yellow) : Color("dark-cyan"))
-          })
-          
-          TextField(
-            text: $searchText,
-            label: {
-              Text("Search a Video").foregroundStyle(Color("light-gray"))
-            }
-          )
-          .foregroundStyle(.white)
-        }.padding([.top, .leading, .bottom], 11.0)
-          .background(Color("blue-gray"))
-          .clipShape(Capsule())
-        
         ScrollView(showsIndicators: false) {
           SubModuloHome()
         }.padding(.vertical)
       }.padding(.horizontal, 18.0)
     }.toolbar(.hidden)
   }
-  
-  func search() {
-    print("SEARCHING...")
-  }
 }
 
 struct SubModuloHome:View {
   @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
   @State var isPlayerActive = false
+  @State var searchText = ""
+  @State var isGameInfoEmpty = false
   
   let urlVideos:[String] = ["https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256720061/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256814567/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256705156/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256801252/movie480.mp4","https://cdn.cloudflare.steamstatic.com/steam/apps/256757119/movie480.mp4"]
   
   var body: some View {
     VStack(spacing: 20) {
+      // Search
+      HStack {
+        Button(action: {search(searchText: searchText)}, label: {
+          Image(systemName: "magnifyingglass").foregroundStyle(searchText.isEmpty ? Color(.yellow) : Color("dark-cyan"))
+        }).alert(isPresented: $isGameInfoEmpty) {
+          Alert(title: Text("Error"), message: Text("Game not found"), dismissButton: .default(Text("Got it")))
+        }
+        
+        TextField(
+          text: $searchText,
+          label: {
+            Text("Search a Video").foregroundStyle(Color("light-gray"))
+          }
+        )
+        .foregroundStyle(.white)
+      }.padding([.top, .leading, .bottom], 11.0)
+        .background(Color("blue-gray"))
+        .clipShape(Capsule())
+      
       // Popular
       VStack {
         Text("More Popular")
@@ -210,6 +208,10 @@ struct SubModuloHome:View {
         }
       }
     }
+  }
+  
+  func search(searchText:String) {
+    isGameInfoEmpty.toggle()
   }
 }
 

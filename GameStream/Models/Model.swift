@@ -11,6 +11,10 @@ struct GamesModel:Codable {
     var games:[GameModel]
 }
 
+struct ResultsModel:Codable {
+  var results: [GameModel]
+}
+
 struct GameModel:Codable,Hashable {
     var title:String
     var studio:String
